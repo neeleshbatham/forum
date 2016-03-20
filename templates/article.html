@@ -1,0 +1,81 @@
+{% extends 'home.html' %}
+{% load staticfiles %}
+
+{% block featured %}
+<style type="text/css">
+ul {
+			list-style-type: none;
+		}
+	.col-sm-2
+	{
+		background-color: #DAE4E4;
+		border-radius: 15px;
+
+	}	
+	.page-header{
+		background-color: #DEE7E7;
+		border-radius: 15px;
+		margin-top: 2px;	
+	}
+	.top-article{
+		background-color: #DEE7E7;
+		border-radius: 15px;
+		margin:auto;	
+		padding: 10px;
+	}
+	.top-img{
+		padding: 10px;
+		border-radius: 20px;
+		margin='auto'
+	}
+	.img-box{
+			float:right;
+	}
+</style>
+
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="articles-featured">
+				<div class='top-img'>
+					<img src="{% static "images/logo.jpg" %}" width='150' height='150'>
+				</div>
+
+			<ul>
+				<li><a href="/articles/all"><img src="{% static "images/reads2.png" %}"></br>&nbsp;Articles</a></li></br>
+				<li><a href="/articles/admin"><img src="{% static "images/writes.png" %}"></br>Create Article</a></li></br>
+				<li><a href="/admin/article/article/add/"><img src="{% static "images/Admins2.png" %}"></br>&nbsp;&nbsp;Admin</a></li></br>
+				<li><a href="https://in.linkedin.com/in/neeleshbatham"><img src="{% static "images/contact.png" %}"></br>Contact Us</a></li></br>
+			</ul>
+
+				<div style="text-align:center; float:left;">
+				<h4>Search</h4>
+				{% csrf_token %}
+				<input type="text" id="search" name="search"/>
+				<ul id="search-results">
+				</ul>
+				</div>
+			</div>
+		</div>	
+		
+
+				
+<div class="col-sm-10">
+		<div class="top-article">
+				<h1>{{article.title}}</h1>
+				<p>Posted on: {{ article.pub_date }} |&nbsp;<a href="/articles/get/{{ article.author }}/">{{ article.author }}
+				</a></p>
+				<p>&nbsp;<img src="/static/{{article.hero_image }}" margin:"auto" width="900" height="300" border-radius="15px"></p>
+				<p style="font-family:verenda; font-size:20px;">{{ article.body }}</p>
+				<p>{{ article.likes }} Person liked this article</p>
+				<p><a class="btn btn-success btn-xs"href="/articles/like/{{article.id}}"> Like <span class="glyphicon glyphicon-chevron-right"></span></a></p>
+				<div class="img-box">
+					<img src="{% static "images/read.png" %}"width='300' height='300'/>
+				</div>	
+		</div>
+			
+</div>
+</div>
+{% block slider %}
+{% endblock %}
+
+{% endblock %}

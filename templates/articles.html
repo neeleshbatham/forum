@@ -1,0 +1,124 @@
+{% extends 'home.html' %}
+{% load staticfiles %}
+
+{% block featured %}
+<style type="text/css">
+ul {
+			list-style-type: none;
+			
+			margin: auto;
+		}
+	.col-sm-2
+	{
+		background-color: #DAE4E4;
+		border-radius: 15px;
+
+	}	
+	.page-header{
+		background-color: #DEE7E7;
+		border-radius: 15px;
+		margin-top: 2px;	
+	}
+	.top-article{
+		background-color: #DEE7E7;
+		border-radius: 20px;
+		margin:auto;	
+		padding: 10px;	
+	}
+	.top-img{
+		border-radius: 20px;
+		margin:auto;
+		padding: 10px;
+	}
+	.page-header{
+				font-family: veranda;
+				padding: 10px;
+
+	}
+	.search-bar{
+		margin: auto;
+		border-bottom: 3px solid black;
+	}
+</style>
+
+	<div class="row">
+		<div class="col-sm-2">
+			<div class="articles-featured">
+				<div class='top-img'>
+					<img src="{% static "images/logo.jpg" %}" width='150' height='150'>
+				</div>
+
+			<ul>
+				<li><a href="/articles/all"><img src="{% static "images/reads2.png" %}"></br>&nbsp;Articles</a></li></br>
+				<li><a href="/admin/article/article/add/"><img src="{% static "images/writes.png" %}"></br>Create Article</a></li></br>
+				<li><a href="/admin/"><img src="{% static "images/Admins2.png" %}"></br>&nbsp;&nbsp;Admin</a></li></br>
+				<li><a href="https://in.linkedin.com/in/neeleshbatham"><img src="{% static "images/contact.png" %}"></br>Contact Us</a></li></br>
+			</ul>
+
+				<div class="search-bar">
+				<h4>Search</h4>
+				{% csrf_token %}
+				<input type="text" id="search" name="search" placeholder=" Search..."/>
+				<ul id="search-results">
+
+				</ul>
+			</br>
+				</div>
+			</div>
+	
+
+		</div>
+			
+		<div class="col-sm-10">
+			<div>
+				<h1 class="page-header"> Top Article this Month</h1>
+            </div>
+          <div class="top-article">  
+					<div class="articles-head">
+							<h2>&nbsp;{{ spl_article.title }}</h2>
+							<p>Posted on: {{ spl_article.pub_date }} |&nbsp;<a href="/articles/get/{{ spl_article.author }}/">{{ spl_article.author }}</a></p>
+							
+							<p>&nbsp;<img src="/static/{{spl_article.hero_image }}" margin:"auto" width="900" height="300" border-radius="15px"></p>
+
+							<p style="font-family:verenda; font-size:18px;">{{ spl_article.body|truncatewords:30}}</p>
+							
+							<a class="btn btn-primary" href="/articles/get/{{spl_article.id }}/">Show More <span class="glyphicon glyphicon-chevron-right"></span></a>
+					</div>
+		 </div>		
+{% block content %}
+
+					<h1>{{ article.title }}</h1>
+
+{% if articles.count > 0 %}
+
+
+{% for article in articles %}
+
+			<div>
+				<h2>{{forloop.counter}}. <a href="/articles/get/{{ article.id }}/">{{ article.title }}</a></h2>
+					<p>{{ article.body| lower|truncatewords:30 }}</p>
+					<a class="btn btn-info btn-xs" href="/articles/get/{{ article.id }}/">Show More <span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+
+{% endfor %}
+
+
+{% else %}
+			<p>None to Show</p>
+{% endif %}
+
+
+{% endblock %}
+
+{% endblock %}
+
+					</div>
+			</div>
+		</div>
+		
+
+
+
+
+
+

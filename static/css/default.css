@@ -1,0 +1,63 @@
+	<style type="text/css">
+
+	body{
+		text-align: center;
+		font-family:"Veranda", Veranda, Sans-serif;
+	}
+	#container{
+	
+		font-family:"Veranda", Veranda, Sans-serif;
+	}
+	#page {
+			width: 960px;
+			text-align: center;
+			margin: auto;
+			background-color: 0c0c0c;
+		}
+
+	#sidebar {
+			float: left;
+			text-align: center;
+			width: 350px;
+			border:1px solid #000;
+		}
+
+	#content {
+			font-family:"Veranda", Veranda, Sans-serif;
+			float: center;
+			margin: auto;
+			text-align: left;
+			width: 600px;
+			border: 1px solid black;
+		}
+
+	#header {
+			font-family:"Veranda", Veranda, Sans-serif;
+			width: 600px;
+			text-align: left;
+			margin: auto;
+			background-color: 0c0c0c;
+			border: 1px solid black;
+		}
+	#top{
+			font-family:"Veranda", Veranda, Sans-serif;
+			width: 600px;
+			text-align: left;
+			margin: auto;
+			background-color: 0c0c0c;
+			border: 1px solid black;
+			font-size: 20px;
+	}
+	#date_time_author{
+			width: 600px;
+			text-align: left;
+			margin: auto;
+			font-family:"Veranda", Veranda, Monospace;
+			font-size: 15px;
+		}
+
+	ul {
+			list-style-type: none;
+		}
+
+	</style>
